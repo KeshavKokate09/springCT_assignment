@@ -1,5 +1,6 @@
 package com.keshav.springct_assignment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,6 @@ public class AddEmplyee extends AppCompatActivity {
     private EditText name, age, address;
     private Button addEmpBtn;
     private DBHelper db;
-    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +49,10 @@ public class AddEmplyee extends AppCompatActivity {
                     db= new DBHelper(AddEmplyee.this);
                     db.addEmployee(empName, empAge, empAddress);
                     Toast.makeText(AddEmplyee.this, "Employee added successfully", Toast.LENGTH_SHORT).show();
-                    updateRecyclerView();
+                    startActivity(new Intent(AddEmplyee.this, HomePage.class));
                 }
             }
         });
     }
 
-    private void updateRecyclerView() {
-        recyclerView = findViewById(R.id.recyclerView);
-        CustomAdapter adapter = new CustomAdapter(this, db.getAllEmployees());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(
-                new LinearLayoutManager(AddEmplyee.this));
-    }
 }

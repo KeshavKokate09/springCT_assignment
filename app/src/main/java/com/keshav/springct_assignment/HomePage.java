@@ -4,18 +4,22 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class HomePage extends AppCompatActivity {
 
-    Button addEmp;
+    private Button addEmp;
+    private RecyclerView recyclerView;
+    private DBHelper db;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +31,19 @@ public class HomePage extends AppCompatActivity {
             return insets;
         });
 
+        db = new DBHelper(this);
+
         addEmp = findViewById(R.id.addempBtn);
+        recyclerView = findViewById(R.id.recyclerView);
+        updateRecyclerView();
         addEmp.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, AddEmplyee.class);
             startActivity(intent);
         });
+    }
+
+    private void updateRecyclerView() {
+        CustomAdapter adapter = new CustomAdapter(db.getAllEmployees());
+        recyclerView.setAdapter(adapter);
     }
 }

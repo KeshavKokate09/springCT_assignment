@@ -71,7 +71,11 @@ public class logIn extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 User user2 = response.body();
                 Toast.makeText(logIn.this,user2.toString(),Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(logIn.this, HomePage.class));
+                if(response.isSuccessful()) {
+                    startActivity(new Intent(logIn.this, HomePage.class));
+                }else{
+                    Toast.makeText(logIn.this,"error With Response",Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
