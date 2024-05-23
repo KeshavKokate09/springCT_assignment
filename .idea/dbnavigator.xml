@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -10,6 +10,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$USER_HOME$/AppData/Local/Google/AndroidStudio2023.3/device-explorer/Pixel_3a_API_34_extension_level_7_x86_64/_/data/data/com.keshav.springct_assignment/databases/database.db" connection-id="virtual-sqlite-connection" session-id="" current-schema="" />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections />
@@ -410,5 +413,8 @@
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
   </component>
 </project>

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AddEmplyee extends AppCompatActivity {
@@ -58,5 +59,7 @@ public class AddEmplyee extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         CustomAdapter adapter = new CustomAdapter(this, db.getAllEmployees());
         recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(
+                new LinearLayoutManager(AddEmplyee.this));
     }
 }

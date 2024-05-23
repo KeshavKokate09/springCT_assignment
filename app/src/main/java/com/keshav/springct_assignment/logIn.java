@@ -56,7 +56,7 @@ public class logIn extends AppCompatActivity {
 
     private void postRequest(String user, String pass) {
         Retrofit retrofit = new  Retrofit.Builder()
-                .baseUrl("https://reqres.in/api/login")
+                .baseUrl("https://reqres.in/api/login/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -70,10 +70,8 @@ public class logIn extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 User user2 = response.body();
-                Bundle b = new Bundle();
-                b.putString("username",user2.getUserName());
-                b.putString("password",user2.getPassword());
-                startActivity(new Intent(logIn.this, HomePage.class).putExtras(b));
+                Toast.makeText(logIn.this,user2.toString(),Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(logIn.this, HomePage.class));
             }
 
             @Override

@@ -21,7 +21,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         this.context = context;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView name;
         TextView address;
@@ -32,15 +32,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             name = itemView.findViewById(R.id.cardView_empName);
             address = itemView.findViewById(R.id.cardView_empAddress);
             age = itemView.findViewById(R.id.cardView_empAge);
-
         }
     }
     @NonNull
     @Override
     public CustomAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.base_cardview_layout,parent,false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
@@ -55,5 +54,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return emplist.size();
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(
+            RecyclerView recyclerView)
+    {
+        super.onAttachedToRecyclerView(recyclerView);
     }
 }
